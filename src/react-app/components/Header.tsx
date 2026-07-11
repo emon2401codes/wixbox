@@ -6,64 +6,57 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     setIsMenuOpen(false)
   }
 
-  const bookCall = () => {
-    scrollToSection('contact')
-  }
+  const navItems = [
+    { label: 'Essays', id: 'essays' },
+    { label: 'Free Guide', id: 'guide' },
+    { label: 'About', id: 'about' },
+  ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-700 bg-slate-900/95 backdrop-blur-xl">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-stone-200 bg-stone-50/95 backdrop-blur-xl">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 font-serif text-lg font-bold text-slate-100">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-2"
+          >
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 font-serif text-base font-bold text-stone-50">
               MS
             </div>
-            <span className="text-lg font-bold tracking-wide text-white">
+            <span className="font-serif text-lg font-bold tracking-tight text-stone-900">
               Modern Stoic
             </span>
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection('results')}
-              className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
-            >
-              Results
-            </button>
-            <button
-              onClick={() => scrollToSection('testimonials')}
-              className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
-            >
-              Clients
-            </button>
-            <button
-              onClick={() => scrollToSection('faq')}
-              className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
-            >
-              FAQ
-            </button>
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
+              >
+                {item.label}
+              </button>
+            ))}
             <Button
-              onClick={bookCall}
+              onClick={() => scrollToSection('subscribe')}
               size="default"
-              className="bg-white text-slate-900 hover:bg-slate-100 border-0"
+              className="rounded-full bg-stone-900 text-stone-50 hover:bg-stone-700 border-0"
             >
-              Get Your Website
+              Subscribe
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-slate-800 transition-colors text-white"
+            className="md:hidden p-2 rounded-lg text-stone-700 hover:bg-stone-200 transition-colors"
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -71,32 +64,23 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-slate-700 bg-slate-900/95 backdrop-blur-xl">
+          <div className="md:hidden border-t border-stone-200 bg-stone-50/95 backdrop-blur-xl">
             <div className="px-4 pt-2 pb-3 space-y-1">
-              <button
-                onClick={() => scrollToSection('results')}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-              >
-                Results
-              </button>
-              <button
-                onClick={() => scrollToSection('testimonials')}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-              >
-                Clients
-              </button>
-              <button
-                onClick={() => scrollToSection('faq')}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-              >
-                FAQ
-              </button>
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full text-left px-3 py-2 text-base font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
               <div className="px-3 py-2">
                 <Button
-                  onClick={bookCall}
-                  className="w-full bg-white text-slate-900 hover:bg-slate-100 border-0"
+                  onClick={() => scrollToSection('subscribe')}
+                  className="w-full rounded-full bg-stone-900 text-stone-50 hover:bg-stone-700 border-0"
                 >
-                  Get Your Website
+                  Subscribe
                 </Button>
               </div>
             </div>
