@@ -14,7 +14,7 @@ export default function Header() {
   }
 
   const bookCall = () => {
-    window.open('https://wa.me/message/WM2DELWYY7VOG1', '_blank')
+    scrollToSection('contact')
   }
 
   return (
@@ -22,12 +22,13 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center -ml-5">
-            <img 
-              src="https://mocha-cdn.com/019a31bf-530f-7948-b48e-cb86ee28270b/Story.png" 
-              alt="Wixbox Logo" 
-              className="h-10 w-auto object-contain"
-            />
+          <div className="flex items-center gap-2">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 font-serif text-lg font-bold text-slate-100">
+              MS
+            </div>
+            <span className="text-lg font-bold tracking-wide text-white">
+              Modern Stoic
+            </span>
           </div>
 
           {/* Desktop Navigation */}
@@ -50,8 +51,8 @@ export default function Header() {
             >
               FAQ
             </button>
-            <Button 
-              onClick={bookCall} 
+            <Button
+              onClick={bookCall}
               size="default"
               className="bg-white text-slate-900 hover:bg-slate-100 border-0"
             >
@@ -91,8 +92,8 @@ export default function Header() {
                 FAQ
               </button>
               <div className="px-3 py-2">
-                <Button 
-                  onClick={bookCall} 
+                <Button
+                  onClick={bookCall}
                   className="w-full bg-white text-slate-900 hover:bg-slate-100 border-0"
                 >
                   Get Your Website

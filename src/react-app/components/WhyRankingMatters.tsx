@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 
 export default function WhyRankingMatters() {
   const openWhatsApp = () => {
-    window.open('https://wa.me/message/WM2DELWYY7VOG1', '_blank')
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const points = [

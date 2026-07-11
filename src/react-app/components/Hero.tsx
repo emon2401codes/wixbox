@@ -4,16 +4,16 @@ import { Button } from './ui/button'
 
 export default function Hero() {
   const bookCall = () => {
-    window.open('https://wa.me/message/WM2DELWYY7VOG1', '_blank')
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const industries = [
-    'Junk Removal',
-    'Autodetailing', 
-    'Solar Company',
-    'HVAC Service',
-    'Resort',
-    'Medical'
+    'Coaching',
+    'Fitness Studio',
+    'Consulting',
+    'Wellness Retreat',
+    'Bookstore',
+    'Local Services'
   ]
 
   return (
@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         {/* Animated grid pattern */}
         <div className="absolute inset-0 opacity-20">
-          <motion.div 
+          <motion.div
             className="absolute inset-0"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M0 20h40M20 0v40' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.2'/%3E%3C/g%3E%3C/svg%3E")`,
@@ -38,7 +38,7 @@ export default function Hero() {
             }}
           />
         </div>
-        
+
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(20)].map((_, i) => (
@@ -66,7 +66,7 @@ export default function Hero() {
       </div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-        
+
 
         {/* Main Heading */}
         <motion.div
@@ -82,9 +82,9 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              No Website Means Missed- <br />
+              Calm Design. <br />
               <span className="bg-gradient-to-t from-[#ff2e00] to-[#fff500] bg-clip-text text-transparent">
-                Leads Every Single Day.
+                Relentless Results.
               </span>
             </motion.span>
             <motion.span
@@ -93,7 +93,7 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              We design websites that generate leads, build credibility, and grow your revenue <br className="hidden md:block" />Focus on your business, while we focus on getting you more business.
+              Modern Stoic builds focused, distraction-free websites that generate leads and grow your revenue <br className="hidden md:block" />Control what you can — your website — and let it work for you around the clock.
             </motion.span>
           </h1>
         </motion.div>
@@ -105,7 +105,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="responsive-heading-sm text-slate-400 mb-12 max-w-2xl mx-auto"
         >
-          Worked with biggest industries
+          Built for businesses of every kind
         </motion.p>
 
         {/* Industry Tags - Sliding Animation */}
@@ -123,13 +123,13 @@ export default function Hero() {
                   key={`first-${industry}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    duration: 0.5, 
+                  transition={{
+                    duration: 0.5,
                     delay: 1.2 + (index * 0.1),
                     type: "spring",
                     stiffness: 100
                   }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     backgroundColor: "rgba(59, 130, 246, 0.2)"
                   }}
@@ -144,13 +144,13 @@ export default function Hero() {
                   key={`second-${industry}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    duration: 0.5, 
+                  transition={{
+                    duration: 0.5,
                     delay: 1.2 + (index * 0.1),
                     type: "spring",
                     stiffness: 100
                   }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     backgroundColor: "rgba(59, 130, 246, 0.2)"
                   }}
@@ -165,13 +165,13 @@ export default function Hero() {
                   key={`third-${industry}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    duration: 0.5, 
+                  transition={{
+                    duration: 0.5,
                     delay: 1.2 + (index * 0.1),
                     type: "spring",
                     stiffness: 100
                   }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     backgroundColor: "rgba(59, 130, 246, 0.2)"
                   }}
@@ -195,9 +195,9 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button 
+            <Button
               onClick={bookCall}
-              size="lg" 
+              size="lg"
               className="text-lg px-8 py-4 h-auto bg-white text-slate-900 hover:bg-slate-100 rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl border-0"
             >
               Get Your Website
@@ -221,7 +221,7 @@ export default function Hero() {
             className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 opacity-20"
           />
         </div>
-        
+
         <div className="absolute top-1/3 right-16 hidden lg:block">
           <motion.div
             animate={{

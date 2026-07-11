@@ -17,7 +17,7 @@ export default function MobileCTA() {
   }, [isDismissed])
 
   const bookCall = () => {
-    window.open('https://wa.me/message/WM2DELWYY7VOG1', '_blank')
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const handleDismiss = () => {

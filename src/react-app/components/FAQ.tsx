@@ -21,11 +21,11 @@ export default function FAQ() {
     },
     {
       question: "What kind of businesses do you work with?",
-      answer: "We work with a wide range of local and service-based businesses — from auto repair shops and construction companies to resorts and spas. If you run a business that needs clients online, we can help you."
+      answer: "We work with a wide range of local and service-based businesses — from coaches and consultants to fitness studios, retreats, and spas. If you run a business that needs clients online, we can help you."
     },
     {
-      question: "Do you have a WhatsApp number where I can connect?",
-      answer: "Yes I do, you can connect me in this number +91 8910461768"
+      question: "How can I get in touch?",
+      answer: "This is a sample website, so the contact details are placeholders — reach us at hello@modernstoic.example."
     }
   ]
 

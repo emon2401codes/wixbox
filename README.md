@@ -1,7 +1,8 @@
-## Wixbox
+## Modern Stoic
 
-This app was created using https://getmocha.com.
-Need help or want to join the community? Join our [Discord](https://discord.gg/shDEGBSe2d).
+A sample marketing website for a fictional web design studio called **Modern Stoic**.
+All client names, testimonials, statistics, and contact details are placeholder sample
+content for demonstration purposes.
 
 To run the devserver:
 ```

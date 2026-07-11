@@ -4,11 +4,11 @@ import { Button } from './ui/button'
 
 export default function FinalCTA() {
   const bookCall = () => {
-    window.open('https://wa.me/message/WM2DELWYY7VOG1', '_blank')
+    window.location.href = 'mailto:hello@modernstoic.example'
   }
 
   return (
-    <section className="py-16 md:py-20 bg-slate-900 relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-20 bg-slate-900 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -43,7 +43,7 @@ export default function FinalCTA() {
                   >
                     Let's get you a website that doesn't only look good,{' '}
                     <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
-                      but performs top in your locality
+                      but performs — calmly and relentlessly
                     </span>
                   </motion.h2>
                 </div>
@@ -70,7 +70,7 @@ export default function FinalCTA() {
                   transition={{ duration: 0.6, delay: 0.7 }}
                   viewport={{ once: true }}
                 >
-                  Ready to dominate your local market? Let's talk.
+                  Ready to master your online presence? Let's talk.
                 </motion.p>
               </motion.div>
             </CardContent>

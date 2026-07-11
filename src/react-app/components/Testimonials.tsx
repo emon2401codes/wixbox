@@ -1,106 +1,77 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
 
 export default function Testimonials() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const videoTestimonials = [
+  const testimonials = [
     {
       id: 1,
-      mediaId: "7w7htjdyun", 
-      title: "Client Success Story 1",
-      aspect: "0.5660377358490566"
+      name: "Marcus A.",
+      role: "Founder, Stillwater Coaching",
+      quote: "They stripped away everything that didn't matter. What's left is a site that quietly does its job — and my calendar has never been fuller."
     },
     {
       id: 2,
-      mediaId: "d3j1efhu43",
-      title: "Client Success Story 2",
-      aspect: "0.575"
+      name: "Elena V.",
+      role: "Owner, Seneca Spa",
+      quote: "I stopped worrying about my website entirely. It loads fast, looks beautiful, and bookings come in every single day."
     },
     {
       id: 3,
-      mediaId: "rq1a5fxbze",
-      title: "Client Success Story 3",
-      aspect: "0.565625"
+      name: "Diogo R.",
+      role: "Manager, Iron Temple Fitness",
+      quote: "The process was simple and calm — one call, a clear plan, and a launch in two weeks. Sign-ups jumped almost immediately."
     },
     {
       id: 4,
-      mediaId: "o30dry5pfa",
-      title: "Client Success Story 4",
-      aspect: "0.5660377358490566"
+      name: "Priya S.",
+      role: "Director, Meridian Consulting",
+      quote: "Our old site confused people. The new one explains what we do in seconds, and prospects arrive at calls already convinced."
     },
     {
       id: 5,
-      mediaId: "y2o17kvvl9",
-      title: "Client Success Story 5",
-      aspect: "0.5642633228840125"
+      name: "Tom H.",
+      role: "Host, The Quiet Grove Retreat",
+      quote: "Guests tell us the website felt like the retreat itself — calm and effortless. That first impression is why they book."
     }
   ]
 
   // Auto-scroll functionality for mobile only
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % videoTestimonials.length)
+      setCurrentSlide((prev) => (prev + 1) % testimonials.length)
     }, 8000) // Change slide every 8 seconds
 
     return () => clearInterval(interval)
-  }, [videoTestimonials.length])
+  }, [testimonials.length])
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % videoTestimonials.length)
+    setCurrentSlide((prev) => (prev + 1) % testimonials.length)
   }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + videoTestimonials.length) % videoTestimonials.length)
+    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
 
-  useEffect(() => {
-    // Load Wistia player script
-    if (typeof window !== 'undefined') {
-      const playerScript = document.createElement('script')
-      playerScript.src = 'https://fast.wistia.com/player.js'
-      playerScript.async = true
-      document.head.appendChild(playerScript)
-
-      // Load individual video scripts
-      videoTestimonials.forEach(video => {
-        const videoScript = document.createElement('script')
-        videoScript.src = `https://fast.wistia.com/embed/${video.mediaId}.js`
-        videoScript.async = true
-        videoScript.type = 'module'
-        document.head.appendChild(videoScript)
-
-        // Add styles for loading state
-        const style = document.createElement('style')
-        style.textContent = `
-          wistia-player[media-id='${video.mediaId}']:not(:defined) { 
-            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/${video.mediaId}/swatch'); 
-            display: block; 
-            filter: blur(5px); 
-            padding-top: ${(1 / parseFloat(video.aspect)) * 100}%; 
-          }
-        `
-        document.head.appendChild(style)
-      })
-    }
-  }, [])
-
-  const WistiaPlayer = ({ video }: { video: typeof videoTestimonials[0] }) => {
+  const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => {
     return (
-      <div className="relative bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-600">
-        <div className="relative w-full">
-          {/* Wistia Player */}
-          {React.createElement('wistia-player', {
-            'media-id': video.mediaId,
-            aspect: video.aspect,
-            className: "w-full h-full rounded-2xl"
-          })}
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3">
-          <h3 className="text-white font-medium text-xs">
-            {video.title}
-          </h3>
+      <div className="relative h-full bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-600">
+        <div className="flex h-full flex-col p-5">
+          <Quote className="h-6 w-6 text-blue-400/60 mb-3" />
+          <p className="text-slate-200 text-sm leading-relaxed mb-4">
+            "{testimonial.quote}"
+          </p>
+          <div className="mt-auto">
+            <div className="flex gap-0.5 mb-2">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <p className="text-white font-medium text-xs">{testimonial.name}</p>
+            <p className="text-slate-400 text-xs">{testimonial.role}</p>
+          </div>
         </div>
       </div>
     )
@@ -114,11 +85,11 @@ export default function Testimonials() {
             Straight From Our Clients
           </h2>
           <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto">
-            Watch real testimonials from our satisfied clients sharing their success stories
+            Sample testimonials showing the kind of stories clients share after launch
           </p>
         </div>
 
-        {/* Mobile: Single Video with Navigation */}
+        {/* Mobile: Single Card with Navigation */}
         <div className="block sm:hidden">
           <div className="relative max-w-sm mx-auto">
             <motion.div
@@ -128,9 +99,9 @@ export default function Testimonials() {
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.3 }}
             >
-              <WistiaPlayer video={videoTestimonials[currentSlide]} />
+              <TestimonialCard testimonial={testimonials[currentSlide]} />
             </motion.div>
-            
+
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
@@ -145,10 +116,10 @@ export default function Testimonials() {
               <ChevronRight className="w-5 h-5 text-white" />
             </button>
           </div>
-          
+
           {/* Slide Indicators */}
           <div className="flex justify-center space-x-2 mt-6">
-            {videoTestimonials.map((_, index) => (
+            {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
@@ -160,16 +131,16 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Desktop: All Videos in Single Row */}
+        {/* Desktop: All Cards in Single Row */}
         <div className="hidden sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 max-w-7xl mx-auto">
-          {videoTestimonials.map((video, index) => (
+          {testimonials.map((testimonial, index) => (
             <motion.div
-              key={video.id}
+              key={testimonial.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <WistiaPlayer video={video} />
+              <TestimonialCard testimonial={testimonial} />
             </motion.div>
           ))}
         </div>
@@ -178,7 +149,7 @@ export default function Testimonials() {
         <div className="text-center mt-8 md:mt-12">
           <p className="text-xs text-slate-400">
             <span className="sm:hidden">Swipe or tap arrows to see more testimonials</span>
-            <span className="hidden sm:inline">Watch these testimonials from our satisfied clients</span>
+            <span className="hidden sm:inline">Sample testimonials for demonstration purposes</span>
           </p>
         </div>
       </div>
